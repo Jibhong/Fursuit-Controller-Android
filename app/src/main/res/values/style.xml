@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- styles.xml -->
+    <style name="LessRoundButtonStyle" parent="Widget.Material3.Button">
+        <item name="shapeAppearance">@style/LessRoundShape</item>
+    </style>
+
+    <style name="LessRoundShape" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">20dp</item>
+    </style>
+
+</resources>
