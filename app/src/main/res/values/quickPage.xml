@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="quickPage_button_margin">8dp</dimen>
+    <!-- styles.xml -->
+    <style name="quickPage_LessRoundButtonStyle" parent="Widget.Material3.Button">
+        <item name="shapeAppearance">@style/quickPage_LessRoundShape</item>
+    </style>
+
+    <style name="quickPage_LessRoundShape" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">20dp</item>
+    </style>
+</resources>

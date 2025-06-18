@@ -3,15 +3,19 @@ package com.jibhong.FursuitController
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.jibhong.FursuitController.fragment.ConnectPage
+import com.jibhong.FursuitController.fragment.FanPage
+import com.jibhong.FursuitController.fragment.QuickPage
+
 
 class ViewPagerAdapter(activity: FragmentActivity): FragmentStateAdapter(activity) {
     override fun getItemCount(): Int = 3
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> Page1Fragment()
+            0 -> QuickPage()
             1 -> ConnectPage()
-            2 -> Page2Fragment()
+            2 -> FanPage()
             else -> throw IllegalStateException("Invalid position $position")
         }
     }
