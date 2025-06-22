@@ -32,6 +32,9 @@ import com.jibhong.FursuitController.DeviceAdapter
 import com.jibhong.FursuitController.R
 import com.jibhong.FursuitController.ScannedDevice
 
+import androidx.fragment.app.activityViewModels
+import com.jibhong.FursuitController.BluetoothViewModel
+
 class ConnectPage : Fragment(R.layout.connect_page) {
 
     private lateinit var bluetoothAdapter: BluetoothAdapter
@@ -47,6 +50,7 @@ class ConnectPage : Fragment(R.layout.connect_page) {
 
     private lateinit var connectedDeviceText: TextView
 
+    private val bluetoothViewModel: BluetoothViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -198,10 +202,13 @@ class ConnectPage : Fragment(R.layout.connect_page) {
 
                     when (newState) {
                         BluetoothProfile.STATE_CONNECTED -> {
+                            gatt.requestMtu(517)
                             Log.d("BLE", "Connected to ${gatt.device.address}")
                             bluetoothGatt = gatt // Store the reference if not already stored
                             gatt.discoverServices()
                             connectedDeviceText.text = "Connected to ${gatt.device.name}"
+
+
                         }
 
                         BluetoothProfile.STATE_DISCONNECTED -> {
@@ -215,7 +222,9 @@ class ConnectPage : Fragment(R.layout.connect_page) {
                             // clear our reference so we know there’s no active connection
                             if (bluetoothGatt == gatt) {
                                 bluetoothGatt = null
+                                bluetoothViewModel.clearGatt()
                             }
+
                         }
                     }
                 }
@@ -229,7 +238,19 @@ class ConnectPage : Fragment(R.layout.connect_page) {
                         Log.e("BLE", "Service discovery failed: $status")
                     }
                 }
+
+                override fun onMtuChanged(gatt: BluetoothGatt, mtu: Int, status: Int) {
+                    super.onMtuChanged(gatt, mtu, status)
+                    if (status == BluetoothGatt.GATT_SUCCESS) {
+                        Log.d("BLE", "MTU changed to $mtu")
+                    } else {
+                        Log.e("BLE", "MTU change failed with status $status")
+                    }
+                }
             })
+
+            bluetoothViewModel.setGatt(bluetoothGatt)
+
         } catch (e: SecurityException) {
             Log.e("BLE", "SecurityException: ${e.message}")
         }
