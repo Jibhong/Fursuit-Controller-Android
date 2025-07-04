@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.jibhong.FursuitController.widget.EyeVisualizerView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+            </com.jibhong.FursuitController.widget.EyeVisualizerView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/ledPage_sliderButtonMargin">
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="@dimen/ledPage_sliderButtonSize" />
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="@dimen/ledPage_sliderButtonSize"
+                    android:layout_marginStart="@dimen/ledPage_sliderButtonMargin"/>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageButton
+                    android:id="@+id/undoButton"
+                    android:layout_width="@dimen/ledPage_sliderButtonSize"
+                    android:layout_height="@dimen/ledPage_sliderButtonSize"
+                    android:background="@drawable/ic_launcher_background"
+                    android:src="@drawable/ic_launcher_foreground"/>
+                <ImageButton
+                    android:id="@+id/redoButton"
+                    android:layout_width="@dimen/ledPage_sliderButtonSize"
+                    android:layout_height="@dimen/ledPage_sliderButtonSize"
+                    android:background="@drawable/ic_launcher_background"
+                    android:src="@drawable/ic_launcher_foreground"
+                    android:layout_marginStart="10dp"/>
+
+
+            </LinearLayout>
+
+<!--            Layer Selector-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_margin="@dimen/global_sliderMargin">
+
+                <ImageButton
+                    android:id="@+id/layerSettingButton"
+                    android:layout_width="@dimen/ledPage_sliderButtonSize"
+                    android:layout_height="@dimen/ledPage_sliderButtonSize"
+                    android:background="@drawable/ic_launcher_background"
+                    android:src="@drawable/ic_launcher_foreground" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/layerRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="@dimen/ledPage_sliderButtonMargin"
+                    android:background="?attr/colorSecondaryContainer" />
+                <ImageButton
+                    android:id="@+id/layerAddButton"
+                    android:layout_width="@dimen/ledPage_sliderButtonSize"
+                    android:layout_height="@dimen/ledPage_sliderButtonSize"
+                    android:background="@drawable/ic_launcher_background"
+                    android:src="@drawable/plus_256"
+                    android:scaleType="centerInside"/>
+            </LinearLayout>
+
+<!--            Keyframe Location-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_margin="@dimen/global_sliderMargin">
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/keyframeSlider"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="@dimen/ledPage_keyframeSliderPaddingLeftRight"
+                    />
+            </LinearLayout>
+
+<!--            Color Selector-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_margin="@dimen/global_sliderMargin">
+
+                <ImageButton
+                    android:id="@+id/colorSettingButton"
+                    android:layout_width="@dimen/ledPage_sliderButtonSize"
+                    android:layout_height="@dimen/ledPage_sliderButtonSize"
+                    android:background="@drawable/ic_launcher_background"
+                    android:src="@drawable/ic_launcher_foreground" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ColorRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="@dimen/ledPage_sliderButtonMargin"
+                    android:background="?attr/colorSecondaryContainer" />
+                <ImageButton
+                    android:id="@+id/colorAddButton"
+                    android:layout_width="@dimen/ledPage_sliderButtonSize"
+                    android:layout_height="@dimen/ledPage_sliderButtonSize"
+                    android:background="@drawable/ic_launcher_background"
+                    android:src="@drawable/plus_256"
+                    android:scaleType="centerInside"/>
+            </LinearLayout>
+
+<!--            Frame Selector-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_margin="@dimen/global_sliderMargin">
+
+                <ImageButton
+                    android:id="@+id/frameSettingButton"
+                    android:layout_width="@dimen/ledPage_sliderButtonSize"
+                    android:layout_height="@dimen/ledPage_sliderButtonSize"
+                    android:background="@drawable/ic_launcher_background"
+                    android:src="@drawable/ic_launcher_foreground" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/frameRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="@dimen/ledPage_sliderButtonMargin"
+                    android:background="?attr/colorSecondaryContainer" />
+                <ImageButton
+                    android:id="@+id/frameAddButton"
+                    android:layout_width="@dimen/ledPage_sliderButtonSize"
+                    android:layout_height="@dimen/ledPage_sliderButtonSize"
+                    android:background="@drawable/ic_launcher_background"
+                    android:src="@drawable/plus_256"
+                    android:scaleType="centerInside"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <!-- 3) Optional: tap to add a new color-picker mini-circle -->
+
+    </FrameLayout>
+</LinearLayout>

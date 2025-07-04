@@ -16,6 +16,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // add JitPack here:
+        maven { url = uri("https://jitpack.io") }
     }
 }
 

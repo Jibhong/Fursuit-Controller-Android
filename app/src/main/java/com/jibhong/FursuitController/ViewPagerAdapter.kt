@@ -6,16 +6,18 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.jibhong.FursuitController.fragment.ConnectPage
 import com.jibhong.FursuitController.fragment.FanPage
 import com.jibhong.FursuitController.fragment.QuickPage
+import com.jibhong.FursuitController.fragment.LedPage
 
 
 class ViewPagerAdapter(activity: FragmentActivity): FragmentStateAdapter(activity) {
-    override fun getItemCount(): Int = 3
+    override fun getItemCount(): Int = 4
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> QuickPage()
             1 -> ConnectPage()
             2 -> FanPage()
+            3 -> LedPage()
             else -> throw IllegalStateException("Invalid position $position")
         }
     }
