@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class DeviceAdapter(
+class BluetoothDeviceAdapter(
     private val devices: List<ScannedDevice>,
     private val onItemClick: (ScannedDevice) -> Unit
-) : RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder>() {
+) : RecyclerView.Adapter<BluetoothDeviceAdapter.DeviceViewHolder>() {
 
     class DeviceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameText: TextView = itemView.findViewById(android.R.id.text1)

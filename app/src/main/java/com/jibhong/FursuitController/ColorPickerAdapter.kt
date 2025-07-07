@@ -1,5 +1,6 @@
 package com.jibhong.FursuitController
 
+import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import java.util.Collections
 
-class ColorAdapter(
+class ColorPickerAdapter(
     private val colors: MutableList<Int>,
     private val onColorClick: (position: Int) -> Unit
-) : RecyclerView.Adapter<ColorAdapter.ColorViewHolder>(),
+) : RecyclerView.Adapter<ColorPickerAdapter.ColorViewHolder>(),
     ItemMoveCallback.ItemTouchHelperContract {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorViewHolder {
@@ -52,5 +53,24 @@ class ColorAdapter(
 
     override fun onRowClear(viewHolder: RecyclerView.ViewHolder) {
         viewHolder.itemView.alpha = 1.0f
+    }
+
+    fun changeColor(index: Int, color: Color) {
+        if (index in colors.indices) {
+            colors[index] = color.toArgb()
+            notifyItemChanged(index)
+        }
+    }
+
+    fun addColor(){
+        if(colors.size >= 10)return
+        colors.add(Color.RED)
+        notifyItemInserted(colors.size-1)
+    }
+
+    fun removeColor(index: Int){
+        if (index !in colors.indices || colors.size <= 1) return
+        colors.removeAt(index)
+        notifyItemRemoved(index)
     }
 }

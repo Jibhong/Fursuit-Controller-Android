@@ -28,7 +28,7 @@ import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGatt
 import android.bluetooth.BluetoothGattCallback
 import android.bluetooth.BluetoothProfile
-import com.jibhong.FursuitController.DeviceAdapter
+import com.jibhong.FursuitController.BluetoothDeviceAdapter
 import com.jibhong.FursuitController.R
 import com.jibhong.FursuitController.ScannedDevice
 
@@ -43,7 +43,7 @@ class ConnectPage : Fragment(R.layout.connect_page) {
     private val scanPeriod: Long = 10000
 
     private val deviceList = mutableListOf<ScannedDevice>()
-    private lateinit var adapter: DeviceAdapter
+    private lateinit var adapter: BluetoothDeviceAdapter
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     private var bluetoothGatt: BluetoothGatt? = null
@@ -58,7 +58,7 @@ class ConnectPage : Fragment(R.layout.connect_page) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.deviceRecyclerView)
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
 
-        adapter = DeviceAdapter(deviceList) { scannedDevice ->
+        adapter = BluetoothDeviceAdapter(deviceList) { scannedDevice ->
             if(bluetoothGatt!=null){
                 try {
                     Toast.makeText(
