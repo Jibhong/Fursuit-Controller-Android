@@ -1,4 +1,4 @@
-package com.jibhong.FursuitController.fragment
+package com.jibhong.fursuitController.fragment
 
 import android.bluetooth.BluetoothGatt
 import android.bluetooth.BluetoothGattCharacteristic
@@ -7,11 +7,11 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.slider.Slider
-import com.jibhong.FursuitController.R
+import com.jibhong.fursuitController.R
 import java.util.*
 
 import androidx.fragment.app.activityViewModels
-import com.jibhong.FursuitController.BluetoothViewModel
+import com.jibhong.fursuitController.sharedData.BluetoothViewModel
 
 
 class FanPage : Fragment(R.layout.fan_page) {

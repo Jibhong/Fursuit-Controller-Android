@@ -1,4 +1,4 @@
-package com.jibhong.FursuitController.ui.theme
+package com.jibhong.fursuitController.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

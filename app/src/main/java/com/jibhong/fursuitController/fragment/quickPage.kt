@@ -1,7 +1,5 @@
-package com.jibhong.FursuitController.fragment
+package com.jibhong.fursuitController.fragment
 
-import android.bluetooth.BluetoothGatt
-import android.bluetooth.BluetoothGattCharacteristic
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,8 +8,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.slider.Slider
-import com.jibhong.FursuitController.BluetoothViewModel
-import com.jibhong.FursuitController.R
+import com.jibhong.fursuitController.sharedData.BluetoothViewModel
+import com.jibhong.fursuitController.R
 import java.util.UUID
 import kotlinx.coroutines.delay
 import androidx.lifecycle.lifecycleScope

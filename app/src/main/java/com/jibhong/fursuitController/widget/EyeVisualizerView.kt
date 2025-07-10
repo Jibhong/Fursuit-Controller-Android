@@ -1,4 +1,4 @@
-package com.jibhong.FursuitController.widget
+package com.jibhong.fursuitController.widget
 
 import android.content.Context
 import android.graphics.Canvas

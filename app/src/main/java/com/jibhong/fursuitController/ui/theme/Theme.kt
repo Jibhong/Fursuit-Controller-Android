@@ -1,6 +1,5 @@
-package com.jibhong.FursuitController.ui.theme
+package com.jibhong.fursuitController.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

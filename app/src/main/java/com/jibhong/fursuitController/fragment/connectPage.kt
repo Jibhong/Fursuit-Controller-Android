@@ -1,4 +1,4 @@
-package com.jibhong.FursuitController.fragment
+package com.jibhong.fursuitController.fragment
 
 import android.Manifest
 import android.bluetooth.BluetoothAdapter
@@ -28,12 +28,12 @@ import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGatt
 import android.bluetooth.BluetoothGattCallback
 import android.bluetooth.BluetoothProfile
-import com.jibhong.FursuitController.BluetoothDeviceAdapter
-import com.jibhong.FursuitController.R
-import com.jibhong.FursuitController.ScannedDevice
+import com.jibhong.fursuitController.bluetooth.BluetoothDeviceAdapter
+import com.jibhong.fursuitController.R
+import com.jibhong.fursuitController.bluetooth.ScannedDevice
 
 import androidx.fragment.app.activityViewModels
-import com.jibhong.FursuitController.BluetoothViewModel
+import com.jibhong.fursuitController.sharedData.BluetoothViewModel
 
 class ConnectPage : Fragment(R.layout.connect_page) {
 

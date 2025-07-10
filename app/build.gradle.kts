@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.jibhong.FursuitController"
+    namespace = "com.jibhong.fursuitController"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.jibhong.FursuitController"
+        applicationId = rootProject.extra["defaultApplicationId"] as String
         minSdk = 34
         targetSdk = 35
         versionCode = 1

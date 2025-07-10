@@ -11,7 +11,7 @@
     <com.skydoves.colorpickerview.ColorPickerView
         android:id="@+id/colorPickerView"
         android:layout_width="300dp"
-        android:layout_height="300dp" />
+        android:layout_height="300dp"/>
 
     <Button
         android:id="@+id/colorPickerRemoveButton"

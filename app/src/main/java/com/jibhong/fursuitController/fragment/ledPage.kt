@@ -1,6 +1,5 @@
-package com.jibhong.FursuitController.fragment
+package com.jibhong.fursuitController.fragment
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -10,19 +9,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.PopupWindow
-import android.widget.Toast
 import androidx.core.graphics.toColor
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.slider.RangeSlider
-import com.jibhong.FursuitController.ColorPickerAdapter
-import com.jibhong.FursuitController.ItemMoveCallback
-import com.jibhong.FursuitController.R
-import com.jibhong.FursuitController.R.id.layerRecyclerView
+import com.jibhong.fursuitController.widget.colorPicker.ColorPickerAdapter
+import com.jibhong.fursuitController.widget.colorPicker.ColorPickerMoveCallback
+import com.jibhong.fursuitController.R
+import com.jibhong.fursuitController.R.id.layerRecyclerView
 import com.skydoves.colorpickerview.ColorPickerView
 import com.skydoves.colorpickerview.listeners.ColorListener
 
@@ -38,7 +35,7 @@ class LedPage : Fragment(R.layout.led_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val slider = view.findViewById<RangeSlider>(R.id.keyframeSlider)
-        slider.values = listOf(20f, 80f)  // 👈 This enables two handles
+        slider.values = listOf(20f, 80f)
         slider.valueFrom = 0f
         slider.valueTo = 100f
 
@@ -46,7 +43,7 @@ class LedPage : Fragment(R.layout.led_page) {
         val frameRecyclerView = view.findViewById<RecyclerView>(R.id.frameRecyclerView)
         val layerRecyclerView = view.findViewById<RecyclerView>(layerRecyclerView)
 
-        colorAdapter = ColorPickerAdapter(mutableListOf(Color.RED)) { position: Int ->
+        colorAdapter = ColorPickerAdapter(){ position: Int ->
             showColorPicker(position)
         }
         colorRecyclerView.adapter = colorAdapter
@@ -57,7 +54,7 @@ class LedPage : Fragment(R.layout.led_page) {
 
 
         // Attach drag & drop helper
-        val colorPickerCallback = ItemMoveCallback(colorAdapter)
+        val colorPickerCallback = ColorPickerMoveCallback(colorAdapter)
         val colorPickerTouchHelper = ItemTouchHelper(colorPickerCallback)
         colorPickerTouchHelper.attachToRecyclerView(colorRecyclerView)
         popupView = LayoutInflater.from(requireContext())
@@ -69,8 +66,6 @@ class LedPage : Fragment(R.layout.led_page) {
         colorAddButton.setOnClickListener {
             colorAdapter.addColor()
         }
-
-
 
     }
 
@@ -86,17 +81,22 @@ class LedPage : Fragment(R.layout.led_page) {
             // optional: set animation style
             animationStyle = android.R.style.Animation_Dialog
         }
+
         val colorPicker = popupView.findViewById<ColorPickerView>(R.id.colorPickerView)
+        colorPicker.setColorListener (ColorListener { color, fromUser ->
+            if (!fromUser) return@ColorListener
+            Log.d("color", color.toColor().toString())
+            colorAdapter.changeColor(position,color.toColor())
+//            colorAdapter.changeColor(position,Color.rgb(255,255,0).toColor())
+            popupWindow.dismiss()
+        })
+
         val colorPickerRemoveButton = popupView.findViewById<Button>(R.id.colorPickerRemoveButton)
         colorPickerRemoveButton.setOnClickListener {
             colorAdapter.removeColor(position)
             popupWindow.dismiss()
         }
-        colorPicker.setColorListener (ColorListener { color, fromUser ->
-            Log.d("color", color.toColor().toString())
-            colorAdapter.changeColor(position,color.toColor())
-            popupWindow.dismiss()
-        })
+
         popupWindow.showAtLocation(root, Gravity.CENTER, 0, 0)
     }
 }

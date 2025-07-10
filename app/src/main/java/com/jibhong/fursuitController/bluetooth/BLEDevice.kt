@@ -1,4 +1,4 @@
-package com.jibhong.FursuitController
+package com.jibhong.fursuitController.bluetooth
 
 import android.bluetooth.BluetoothDevice
 

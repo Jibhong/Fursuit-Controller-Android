@@ -1,12 +1,12 @@
-package com.jibhong.FursuitController
+package com.jibhong.fursuitController
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.jibhong.FursuitController.fragment.ConnectPage
-import com.jibhong.FursuitController.fragment.FanPage
-import com.jibhong.FursuitController.fragment.QuickPage
-import com.jibhong.FursuitController.fragment.LedPage
+import com.jibhong.fursuitController.fragment.ConnectPage
+import com.jibhong.fursuitController.fragment.FanPage
+import com.jibhong.fursuitController.fragment.QuickPage
+import com.jibhong.fursuitController.fragment.LedPage
 
 
 class ViewPagerAdapter(activity: FragmentActivity): FragmentStateAdapter(activity) {

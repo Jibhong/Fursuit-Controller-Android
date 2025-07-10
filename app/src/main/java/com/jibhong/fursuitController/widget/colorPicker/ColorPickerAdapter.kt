@@ -1,4 +1,4 @@
-package com.jibhong.FursuitController
+package com.jibhong.fursuitController.widget.colorPicker
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.jibhong.fursuitController.R
 import java.util.Collections
 
 class ColorPickerAdapter(
-    private val colors: MutableList<Int>,
+    private val colors: MutableList<Int> = mutableListOf(Color.rgb(255,255,255)),
     private val onColorClick: (position: Int) -> Unit
 ) : RecyclerView.Adapter<ColorPickerAdapter.ColorViewHolder>(),
-    ItemMoveCallback.ItemTouchHelperContract {
+    ColorPickerMoveCallback.ItemTouchHelperContract {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -31,7 +32,10 @@ class ColorPickerAdapter(
 
         init {
             colorView.setOnClickListener {
-                onColorClick(adapterPosition)
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onColorClick(position)
+                }
             }
         }
 
@@ -64,13 +68,14 @@ class ColorPickerAdapter(
 
     fun addColor(){
         if(colors.size >= 10)return
-        colors.add(Color.RED)
+        colors.add(Color.rgb(255,255,255))
         notifyItemInserted(colors.size-1)
     }
 
     fun removeColor(index: Int){
-        if (index !in colors.indices || colors.size <= 1) return
+        if (index !in colors.indices) return
         colors.removeAt(index)
         notifyItemRemoved(index)
+        if (colors.size == 0) addColor()
     }
 }

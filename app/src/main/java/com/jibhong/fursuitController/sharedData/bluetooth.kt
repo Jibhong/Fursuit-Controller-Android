@@ -1,4 +1,4 @@
-package com.jibhong.FursuitController
+package com.jibhong.fursuitController.sharedData
 
 import android.bluetooth.BluetoothGatt
 import androidx.lifecycle.LiveData

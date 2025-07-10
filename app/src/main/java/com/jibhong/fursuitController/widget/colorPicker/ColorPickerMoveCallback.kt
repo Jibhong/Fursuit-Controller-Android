@@ -1,9 +1,9 @@
-package com.jibhong.FursuitController
+package com.jibhong.fursuitController.widget.colorPicker
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemMoveCallback(
+class ColorPickerMoveCallback(
     private val contract: ItemTouchHelperContract
 ) : ItemTouchHelper.Callback() {
 
@@ -27,7 +27,7 @@ class ItemMoveCallback(
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
-        contract.onRowMoved(viewHolder.adapterPosition, target.adapterPosition)
+        contract.onRowMoved(viewHolder.bindingAdapterPosition, target.bindingAdapterPosition)
         return true
     }
 
